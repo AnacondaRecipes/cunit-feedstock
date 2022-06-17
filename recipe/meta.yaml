@@ -12,6 +12,7 @@ source:
 
 build:
   number: 1002
+  # trigger: 0
 
 requirements:
   build:
@@ -22,7 +23,7 @@ requirements:
     - cmake       # [win]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - make
+    - make   # [unix]
     - ninja  # [win]
 
 test:
