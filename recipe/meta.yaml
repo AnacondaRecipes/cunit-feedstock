@@ -1,18 +1,18 @@
+{% set name = "cunit" %}
 {% set version = "2.1.3" %}
 {% set version_url = "2.1-3" %}
 
 package:
-  name: cunit
+  name: {{ name }}
   version: {{ version }}
 
 source:
-  - url: https://sourceforge.net/projects/cunit/files/CUnit/{{ version_url }}/CUnit-{{ version_url }}.tar.bz2
+  - url: https://sourceforge.net/projects/{{ name }}/files/CUnit/{{ version_url }}/CUnit-{{ version_url }}.tar.bz2
     md5: b5f1a9f6093869c070c6e4a9450cc10c
   - path: CMakeLists.txt  # [win]
 
 build:
-  number: 1002
-  # trigger: 0
+  number: 1003
 
 requirements:
   build:
@@ -20,11 +20,14 @@ requirements:
     - autoconf    # [unix]
     - automake    # [unix]
     - gnuconfig   # [unix]
-    - cmake       # [win]
+    # CMake ≥4.0 removed support for cmake_minimum_required versions below 3.5,
+    # so this CUnit CMakeLists.txt fails to configure with modern CMake.
+    - cmake <4    # [win]
+    - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - make   # [unix]
-    - ninja  # [win]
+    - ninja-base  # [win]
 
 test:
   commands:
