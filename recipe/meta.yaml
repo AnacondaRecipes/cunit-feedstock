@@ -20,9 +20,7 @@ requirements:
     - autoconf    # [unix]
     - automake    # [unix]
     - gnuconfig   # [unix]
-    # CMake ≥4.0 removed support for cmake_minimum_required versions below 3.5,
-    # so this CUnit CMakeLists.txt fails to configure with modern CMake.
-    - cmake <4    # [win]
+    - cmake       # [win]
     - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
