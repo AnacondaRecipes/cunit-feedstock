@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0.2)
+cmake_minimum_required(VERSION 3.5)
 project(CUnit LANGUAGES C)
 
 # Export all symbols when building a DLL on MSVC
@@ -67,13 +67,6 @@ install(
     GROUP_READ GROUP_WRITE
     WORLD_READ)
 
-# install(
-#   FILES
-#     $<TARGET_PDB_FILE:cunit>
-#   DESTINATION
-#     bin
-#   OPTIONAL)
-
 install(
   FILES
     ${BASIC_HEADERS}
@@ -82,4 +75,3 @@ install(
     ${FRAMEWORK_HEADERS}
   DESTINATION
     include/CUnit)
-
